@@ -13,10 +13,15 @@ const AddMovie = ({
   const handleToggle = () => setShow(!show);
 
   const handleChange = (e) => {
-    setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
+    if (e.target.name === "trailer") {
+      setNewMovie({
+        ...newMovie,
+        [e.target.name]: e.target.value.replace("watch?v=", "embed/"),
+      });
+    } else {
+      setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
+    }
   };
-
-
 
   const handleAddmovie = () => {
     if (newMovie.rating >= 1 && newMovie.rating <= 5) {
@@ -26,7 +31,6 @@ const AddMovie = ({
       alert("Movie rating should be between 1 and 5.");
     }
   };
-
   return (
     <div>
       <Button variant="primary" onClick={handleToggle}>
@@ -44,6 +48,24 @@ const AddMovie = ({
             name="Title"
             placeholder="Enter the movie title"
             value={newMovie.Title}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            onChange={handleChange}
+            name="description"
+            placeholder="Enter the movie description"
+            value={newMovie.description}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            onChange={handleChange}
+            name="trailer"
+            placeholder="Enter the trailer link"
+            value={newMovie.trailer}
           />
           <br />
           <br />

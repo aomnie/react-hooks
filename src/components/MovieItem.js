@@ -1,9 +1,11 @@
 import ReactStars from "react-rating-stars-component";
-import star from "react-rating-stars-component/dist/star";
-import NavBar from "./NavBar";
-
+import { Link } from "react-router-dom";
 
 const MovieItem = ({ movies, rating }) => {
+  const da3de3i = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div
       style={{
@@ -31,7 +33,12 @@ const MovieItem = ({ movies, rating }) => {
               height="300px"
               width="200px"
             />
-            <h5 style={{ color: "white", marginTop: "15px" }}>{movie.Title}</h5>
+            <h5 style={{ color: "white", marginTop: "15px" }} onClick={da3de3i}>
+              <Link to={`/movie/${movie.id}`} style={{ color: "white" }}>
+                {" "}
+                {movie.Title}{" "}
+              </Link>
+            </h5>
             <ReactStars
               count={5}
               //onChange={setRating}

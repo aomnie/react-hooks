@@ -1,5 +1,6 @@
-import { Container, Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 import AddMovie from "./AddMovie";
 
 const NavBar = ({
@@ -23,12 +24,23 @@ const NavBar = ({
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/4221/4221419.png"
-          height="30px"
-          alt="logo"
-        />
-        <Navbar.Brand href="#home">Movie Night</Navbar.Brand>
+        <Link to="/home" style={{ textDecoration: "none" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4221/4221419.png"
+              height="40px"
+              alt="logo"
+            />
+            <h3 style={{ color: "white", marginTop:"5px" }}>Movie Night</h3>
+          </div>
+        </Link>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <div
